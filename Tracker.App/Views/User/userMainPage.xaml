@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:views="clr-namespace:Tracker.App.Views"
+                        xmlns:m="clr-namespace:Tracker.BL.Models;assembly=Tracker.BL"
+                        xmlns:viewModels="clr-namespace:Tracker.App.ViewModels"
+                        x:Class="Tracker.App.Views.User.userMainPage"
+                        Title="userMainPage"
+                        x:Name="userMainPageRoot"
+                        x:DataType="viewModels:UserDetailViewModel"
+                        BackgroundColor="White">
+    <Grid>
+
+        <Button Text="Create" TextColor="Black" FontSize="25" BorderColor="black"
+                BackgroundColor="#ebebeb" WidthRequest="132" HeightRequest="141" CornerRadius="31"
+                VerticalOptions="Start" HorizontalOptions="Start" Margin="50,10,0,0"
+                Command="{Binding GoToCreateCommand}"
+                >
+
+        </Button>
+
+        <Button Text="My Projects" TextColor="Black" FontSize="18" BorderColor="black"
+            BackgroundColor="#ebebeb" WidthRequest="132" HeightRequest="141" CornerRadius="31"
+                VerticalOptions="Center" HorizontalOptions="Start" Margin="50,10,0,10"
+                Command="{Binding GoToProjectListCommand}"
+                CommandParameter="{Binding Id}"
+                >
+
+        </Button>
+
+        <Button Text="My Activities" TextColor="Black" FontSize="18" BorderColor="black"
+            BackgroundColor="#ebebeb" WidthRequest="132" HeightRequest="141" CornerRadius="31"
+                VerticalOptions="End" HorizontalOptions="Start" Margin="50,0,0,10"
+                Command="{Binding GoToActivityListCommand}"
+                CommandParameter="{Binding User.Id}"
+                >
+
+        </Button>
+
+        <ImageButton Source="{Binding User.ImgUrl, FallbackValue='dotnet_bot.png'}"  WidthRequest="132" HeightRequest="141"
+               VerticalOptions="Start" HorizontalOptions="End"
+                     BackgroundColor="#ebebeb" BorderColor="Black" CornerRadius="31"
+                     Margin="10">
+
+        </ImageButton>
+
+        <Label Text="{Binding User.Name}" TextColor="black" FontSize="40"
+               VerticalOptions="Start" HorizontalOptions="End" Margin="0,20,150,0">
+
+        </Label>
+        <Label Text="{Binding User.Surname}" TextColor="black" FontSize="40"
+               VerticalOptions="Start" HorizontalOptions="End" Margin="0,60,150,0">
+
+        </Label>
+
+        <Label WidthRequest="300" HeightRequest="60"
+                Text="Closest Activities" FontSize="30" TextColor="Black"
+                Margin="30,0,0,100"></Label>
+
+        <CollectionView ItemsSource="{Binding User.Activities}"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="Center"
+                        Margin="30,0,50,100">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal"
+                                 HorizontalItemSpacing="10"
+                                 VerticalItemSpacing="10"
+                                 Span="2" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:ActivityListModel">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="339"></ColumnDefinition>
+                            <ColumnDefinition Width="80"></ColumnDefinition>
+                            <ColumnDefinition Width="80"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                        </Grid.RowDefinitions>
+
+                        <Button Text="{Binding Name}"
+                                TextColor="Black"
+                                HeightRequest="50"
+                                BackgroundColor="#ebebeb"
+                                BorderColor="Black"
+                                BorderWidth="1"
+                                Command="{Binding Source={x:Reference myActivitiesRoot}, Path=BindingContext.GoToDetailCommand}"
+                                CommandParameter="{Binding Id}" />
+
+                        <Label Text="{Binding Start}"
+                               Grid.Column="1"
+                               TextColor="Black"
+                               HeightRequest="40"
+                               BackgroundColor="#ebebeb" />
+
+                        <Label Text="{Binding End}"
+                               Grid.Column="2"
+                               TextColor="Black"
+                               HeightRequest="40"
+                               BackgroundColor="#ebebeb" />
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+
+        <Button WidthRequest="120" HeightRequest="40" BackgroundColor="#ebebeb"
+                VerticalOptions="End" HorizontalOptions="End"
+                Text="Change User" TextColor="Black" Margin="10" BorderColor="Black"
+                Command="{Binding GoToChangeUserCommand}"
+                />
+
+        <Button WidthRequest="120" HeightRequest="40" BackgroundColor="#ebebeb"
+                VerticalOptions="End" HorizontalOptions="End"
+                Text="Edit Profile" TextColor="Black" Margin="0,0,10,250" BorderColor="Black"
+                Command="{Binding GoToEditCommand}"
+                />
+
+        <Button WidthRequest="120" HeightRequest="40" BackgroundColor="#ebebeb"
+                VerticalOptions="End" HorizontalOptions="End"
+                Text="Delete" TextColor="Black" Margin="0,0,150,10" BorderColor="Black"></Button>
+    </Grid>
+
+</views:ContentPageBase>

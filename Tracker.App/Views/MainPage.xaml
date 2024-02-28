@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:views="clr-namespace:Tracker.App.Views"
+                        xmlns:viewModels="clr-namespace:Tracker.App.ViewModels"
+                        x:Class="Tracker.App.Views.MainPage"
+                        x:DataType="viewModels:MainPageViewModel"
+                        x:Name="MainPageRoot"
+                        BackgroundColor="White">
+
+    <Grid>
+        <ImageButton Source="https://cdn-icons-png.flaticon.com/512/3033/3033143.png"
+                     Aspect="AspectFit"
+                     VerticalOptions="Center"
+                     Margin="0,0,400,0"
+                     WidthRequest="232" HeightRequest="241" CornerRadius="31"
+                     x:DataType="viewModels:MainPageViewModel"
+                     Command="{Binding GoToCreateUserCommand}"
+                        BackgroundColor="#ebebeb"/>
+
+
+        <ImageButton Source="https://cdn-icons-png.flaticon.com/512/32/32441.png"
+                     Aspect="AspectFill"
+                     VerticalOptions="Center"
+                     Margin="400,0,0,0"
+                     x:DataType="viewModels:MainPageViewModel"
+                     Command="{Binding GoToChooseUserCommand}"
+        WidthRequest="232" HeightRequest="241" CornerRadius="31" BackgroundColor="#ebebeb"/>
+
+        <Label Text="New User" TextColor="Black"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               Margin="0,300,400,0"
+                FontSize="20"
+               FontAttributes="Bold">
+        </Label>
+
+        <Label Text="Choose User" TextColor="Black"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               Margin="400,300,0,0"
+                FontSize="20"
+               FontAttributes="Bold">
+        </Label>
+    </Grid>
+</views:ContentPageBase>

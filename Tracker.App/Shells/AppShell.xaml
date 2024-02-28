@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Tracker.App"
+    xmlns:views="clr-namespace:Tracker.App.Views"
+    xmlns:u="clr-namespace:Tracker.App.Views.User"
+    x:Class="Tracker.App.Shells.AppShell"
+    x:Name="AppShellRoot"
+    FlyoutBehavior="Disabled">
+
+    <Shell.MenuBarItems>
+        <MenuBarItem Text="">
+            <MenuFlyoutItem Text=""
+                Command="{Binding Source={x:Reference AppShellRoot}, Path=GoToMainCommand}"/>
+
+        </MenuBarItem>
+    </Shell.MenuBarItems>
+    <ShellContent ContentTemplate="{DataTemplate views:MainPage}" Route="main" />
+    <ShellContent ContentTemplate="{DataTemplate u:userMainPage}" Route="user" />
+</Shell>

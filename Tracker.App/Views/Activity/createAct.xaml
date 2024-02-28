@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:vm="clr-namespace:Tracker.App.ViewModels"
+                        xmlns:views="clr-namespace:Tracker.App.Views"
+                        x:Class="Tracker.App.Views.Activity.createAct"
+                        Title="createAct"
+                        x:DataType="vm:ActivityEditViewModel"
+                        x:Name="createActivityRoot"
+                        BackgroundColor="White"
+                        xmlns:control="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
+                        xmlns:control2="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs">
+
+
+    <Grid>
+
+        <Label Text="Create Activity" TextColor="Black"
+               VerticalOptions="Start"
+                HorizontalOptions="Center"
+                Margin="0, -7, 0, 0"
+               FontSize="50"
+               FontAttributes="Bold">
+        </Label>
+
+        <Border VerticalOptions="End" HorizontalOptions="End" WidthRequest="565" HeightRequest="400">
+
+        </Border>
+
+
+        <Entry Placeholder="Enter Activity Name"
+               Text="{Binding Activity.Name, Mode=TwoWay}"
+               VerticalOptions="Center"
+                HorizontalOptions="Center"
+               Margin="390,0,0,200"
+               WidthRequest="300"
+               TextColor="Black"
+               BackgroundColor="#ebebeb"
+
+               FontSize="Default">
+        </Entry>
+
+        <Label Text="Time From " TextColor="Black"
+               VerticalOptions="Center" HorizontalOptions="Center"
+               FontSize="25" Margin="215,0,0,80">
+        </Label>
+
+        <Label Text="Time To" TextColor="Black"
+               VerticalOptions="Center" HorizontalOptions="Center"
+               FontSize="25" Margin="570,0,0,80">
+        </Label>
+
+
+        <DatePicker Date="{Binding Activity.Start, Mode=TwoWay}"
+                    MaximumDate="{Binding Activity.End, Mode=OneWay}"
+                    DateSelected="DataPickerStartDateSelected"
+                    VerticalOptions="Center"
+                HorizontalOptions="Center"
+               Margin="200,0,0,0"
+               WidthRequest="120" 
+               TextColor="Black"
+                    BackgroundColor="#ebebeb"
+                    x:Name="DataPickerStart"
+                    FontSize="Default">
+        </DatePicker>
+
+        <DatePicker
+               VerticalOptions="Center"
+                HorizontalOptions="Center"
+               Margin="600,0,0,0"
+                    WidthRequest="120" 
+               TextColor="Black"
+               BackgroundColor="#ebebeb"
+                    DateSelected="DataPickerEndDateSelected"
+                    x:Name="DataPickerEnd"
+                    Date="{Binding Activity.End, Mode=TwoWay}"
+                    MinimumDate="{Binding Activity.Start, Mode=OneWay}"
+                    FontSize="Default">
+        </DatePicker>
+
+        <Label Text="Note " TextColor="Black"
+               VerticalOptions="Center" HorizontalOptions="Center"
+               FontSize="25" Margin="150,100,0,0">
+        </Label>
+        <Entry Placeholder="Enter Note"
+               VerticalOptions="Center"
+                HorizontalOptions="Center"
+               Margin="390,180,0,0"
+               WidthRequest="300"
+               TextColor="Black"
+               Text="{Binding Activity.Description, Mode=TwoWay}"
+               BackgroundColor="#ebebeb"
+               FontSize="Default">
+        </Entry>
+
+        <control2:SfComboBox
+                        ItemsSource="{Binding CathegorySelection}"
+                        SelectedItem="{Binding SelectedActivityType}"
+                        Placeholder="Category"
+                        PlaceholderColor="Black"
+                        BackgroundColor="#ebebeb"
+                        HeightRequest="40" WidthRequest="150"
+                        DisplayMemberPath="Name" TextMemberPath="Name"
+                        MaxDropDownHeight="300"
+                        HorizontalOptions="End"
+                        Margin="0,0,70,200">
+        </control2:SfComboBox>
+
+
+        <control:SfCalendar
+               x:Name="Calendar"
+            View="Month" SelectionMode="Range" WidthRequest="570" HeightRequest="400"
+                        HorizontalOptions="Start" VerticalOptions="End" BackgroundColor="#ebebeb"
+                            SelectionChanged="SfCalendar_SelectionChanged">
+            <control:SfCalendar.MonthView>
+                <control:CalendarMonthView FirstDayOfWeek="Monday">
+                </control:CalendarMonthView>
+            </control:SfCalendar.MonthView>
+        </control:SfCalendar>
+
+        <Button Text="Submit"
+                TextColor="Black"
+                VerticalOptions="End"
+                Margin="400, 0, 0, 30"
+                WidthRequest="200" HeightRequest="50"
+                BackgroundColor="#ebebeb"
+                BorderColor="Black"
+                BorderWidth="1"
+                Command="{Binding SaveCommand}"
+                CommandParameter="{Binding UserId}"
+                />
+
+    </Grid>
+
+</views:ContentPageBase>

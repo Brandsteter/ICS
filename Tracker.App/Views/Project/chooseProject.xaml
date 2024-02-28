@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:views="clr-namespace:Tracker.App.Views"
+                        xmlns:viewModels="clr-namespace:Tracker.App.ViewModels"
+                        xmlns:m="clr-namespace:Tracker.BL.Models;assembly=Tracker.BL"
+                        x:Class="Tracker.App.Views.Project.chooseProject"
+                        Title="chooseProject"
+                        x:Name="chooseProjectRoot"
+                        x:DataType="viewModels:ProjectListViewModel"
+                        BackgroundColor="White">
+    <Grid>
+
+        <Grid>
+            <CollectionView ItemsSource="{Binding Projects}"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="Center">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal"
+                                    HorizontalItemSpacing="10" VerticalItemSpacing="10"
+                                    Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:ProjectListModel">
+                        <Button Text="{Binding Name}"
+                        TextColor="Black"
+                        Margin="0, 20, 0, 0"
+                        WidthRequest="339" HeightRequest="50"
+                        BackgroundColor="#ebebeb"
+                        BorderColor="Black"
+                        BorderWidth="1"
+                        Command="{Binding Source={x:Reference chooseProjectRoot}, Path=BindingContext.GoToDetailCommand}"
+                        CommandParameter="{Binding Id}"
+                        />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+
+
+        <Label Text="Choose the Project" TextColor="Black"
+               VerticalOptions="Start"
+                HorizontalOptions="Center"
+                Margin="0, 0, 0, 0"
+               FontSize="50"
+               FontAttributes="Bold">
+        </Label>
+
+
+        <Button Text="Delete Project"
+                TextColor="Black"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Margin="10"
+                WidthRequest="152" HeightRequest="32"
+                BackgroundColor="#ebebeb"
+                BorderColor="Black"
+                BorderWidth="1">
+        </Button>
+
+        <Button Text="Create Project"
+                TextColor="Black"
+                VerticalOptions="End"
+                HorizontalOptions="Start"
+                Margin="10"
+                WidthRequest="152" HeightRequest="32"
+                BackgroundColor="#ebebeb"
+                BorderColor="Black"
+                BorderWidth="1"
+                Command="{Binding GoToCreateProjectCommand}"
+                CommandParameter="{Binding UserId}">
+        </Button>
+
+
+
+
+
+        <Button Text="List of All Projects"
+                TextColor="Black"
+                VerticalOptions="Start"
+                HorizontalOptions="End"
+                Margin="10"
+                WidthRequest="152" HeightRequest="32"
+                BackgroundColor="#ebebeb"
+                BorderColor="Black"
+                BorderWidth="1"
+                Command="{Binding ShowAllCommand}"/>
+    </Grid>
+
+</views:ContentPageBase>

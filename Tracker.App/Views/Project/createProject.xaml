@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:views="clr-namespace:Tracker.App.Views"
+                        xmlns:viewModels="clr-namespace:Tracker.App.ViewModels"
+                        x:Class="Tracker.App.Views.Project.createProject"
+                        x:DataType="viewModels:ProjectEditViewModel"
+                        Title="createProject"
+                        BackgroundColor="White">
+    <Grid>
+        <Label TextColor="black" Text="Create Project"
+               FontSize="50" VerticalOptions="Start" HorizontalOptions="Center"
+               Margin="0,20,0,0" FontAttributes="Bold"></Label>
+
+        <Entry Placeholder="Enter name"
+               Text="{Binding Project.Name}"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               BackgroundColor="#ebebeb"
+               TextColor="Black"
+               WidthRequest="300"
+               Margin="0,0,0,100"
+               />
+
+
+        <Button Text="Submit" FontSize="30" TextColor="black"
+                WidthRequest="200" HeightRequest="80" Background="#ebebeb"
+                BorderColor="black"
+                VerticalOptions="End"
+                Margin="0,0,0,100"
+                Command="{Binding SaveCommand}"
+                CommandParameter="{Binding UserId}"
+                />
+
+    </Grid>
+</views:ContentPageBase>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:views="clr-namespace:Tracker.App.Views"
+                        xmlns:control="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+                        xmlns:vm="clr-namespace:Tracker.App.ViewModels"
+                        x:Class="Tracker.App.Views.Project.projectName"
+                        Title="projectName"
+                        x:DataType="vm:ProjectDetailViewModel"
+                        xmlns:m="clr-namespace:Tracker.BL.Models;assembly=Tracker.BL"
+                        BackgroundColor="White">
+
+    <StackLayout>
+
+        <Label Text="{Binding Project.Name}" TextColor="Black"
+               VerticalOptions="Start"
+                HorizontalOptions="Center"
+                Margin="0, 0, 0, 0"
+               FontSize="50"
+               FontAttributes="Bold">
+        </Label>
+
+
+        <Button Text="Delete Project"
+                TextColor="Black"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                Margin="0,335,5,0"
+                WidthRequest="152" HeightRequest="32"
+                BackgroundColor="#ebebeb"
+                BorderColor="Black"
+                BorderWidth="1">
+        </Button>
+
+        <Button Text="Edit Project"
+                TextColor="Black"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                Margin="5,-43,0,0"
+                WidthRequest="152" HeightRequest="32"
+                BackgroundColor="#ebebeb"
+                BorderColor="Black"
+                BorderWidth="1"
+                IsVisible="{Binding EditVisible}"
+                Command="{Binding GoToEditCommand}">
+        </Button>
+        <Button Text="Subscribe to project"
+                TextColor="Black"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                Margin="5,0,0,0"
+                WidthRequest="200" HeightRequest="32"
+                BackgroundColor="#ebebeb"
+                BorderColor="Black"
+                BorderWidth="1"
+                IsVisible="{Binding SubscribeVisible}"
+                Command="{Binding SubscribeCommand}">
+        </Button>
+
+
+        <CollectionView ItemsSource="{Binding Project.Activities}"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="Center"
+                        Margin="30,0,50,100">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal"
+                                 HorizontalItemSpacing="10"
+                                 VerticalItemSpacing="10"
+                                 Span="2" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:ActivityListModel">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="339"></ColumnDefinition>
+                            <ColumnDefinition Width="80"></ColumnDefinition>
+                            <ColumnDefinition Width="80"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                        </Grid.RowDefinitions>
+
+                        <Button Text="{Binding Name}"
+                                TextColor="Black"
+                                HeightRequest="50"
+                                BackgroundColor="#ebebeb"
+                                BorderColor="Black"
+                                BorderWidth="1"
+                                Command="{Binding Source={x:Reference myActivitiesRoot}, Path=BindingContext.GoToDetailCommand}"
+                                CommandParameter="{Binding Id}" />
+
+                        <Label Text="{Binding Start}"
+                               Grid.Column="1"
+                               TextColor="Black"
+                               HeightRequest="40"
+                               BackgroundColor="#ebebeb" />
+
+                        <Label Text="{Binding End}"
+                               Grid.Column="2"
+                               TextColor="Black"
+                               HeightRequest="40"
+                               BackgroundColor="#ebebeb" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Grid>
+            <CollectionView ItemsSource="{Binding Project.Users}"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal"
+                                     HorizontalItemSpacing="10"
+                                     VerticalItemSpacing="10"
+                                     Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:UserListModel">
+                        <Button Text="{Binding NameSurname}"
+                                TextColor="Black"
+                                Margin="0, 20, 0, 0"
+                                WidthRequest="339"
+                                HeightRequest="50"
+                                BackgroundColor="#ebebeb"
+                                BorderColor="Black"
+                                BorderWidth="1"
+                                Command="{Binding Source={x:Reference chooseUserRoot}, Path=BindingContext.GoToDetailCommand}"
+                                CommandParameter="{Binding Id}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </StackLayout>
+
+</views:ContentPageBase>

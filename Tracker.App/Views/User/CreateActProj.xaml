@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:views="clr-namespace:Tracker.App.Views"
+                        xmlns:viewModels="clr-namespace:Tracker.App.ViewModels"
+                        x:Class="Tracker.App.Views.User.CreateActProj"
+                        Title="CreateActProj"
+                        x:DataType="viewModels:CreateActProjViewModel"
+                        x:Name="createActProjRoot"
+                        BackgroundColor="White">
+    <StackLayout Orientation="Horizontal">
+
+
+        <ImageButton Source="https://p.kindpng.com/picc/s/699-6998313_ios-bell-outline-comments-white-bell-icon-png.png"
+                     Aspect="AspectFill"
+                     VerticalOptions="CenterAndExpand"
+                     Margin="230,0,0,0"
+                     WidthRequest="232" HeightRequest="241" CornerRadius="31"
+                     BackgroundColor="#ebebeb"
+                     Command="{Binding GoToCreateActivityCommand}"
+                     CommandParameter="{Binding Id}"
+                     />
+
+
+        <ImageButton Source="https://icons.veryicon.com/png/o/education-technology/data-exchange/plan-management-3.png"
+                     Aspect="AspectFill"
+                     VerticalOptions="CenterAndExpand"
+                     Margin="200,0,300,0"
+                     WidthRequest="232" HeightRequest="241" CornerRadius="31" BackgroundColor="#ebebeb"
+                     Command="{Binding GoToCreateProjectCommand}"
+                     CommandParameter="{Binding Id}"
+                     />
+
+        <Label Text="Activity" TextColor="Black"
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="End"
+               Margin="-885,290,0,0"
+                FontSize="20"
+               FontAttributes="Bold">
+        </Label>
+
+        <Label Text="Project" TextColor="Black"
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="End"
+               Margin="365,290,0,0"
+                FontSize="20"
+               FontAttributes="Bold">
+        </Label>
+
+        <Label Text="Create" TextColor="Black"
+               VerticalOptions="Start"
+               Margin="-335,10,0,0"
+                FontSize="50"
+               FontAttributes="Bold">
+        </Label>
+        
+    </StackLayout>
+</views:ContentPageBase>

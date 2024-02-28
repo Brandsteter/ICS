@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:views="clr-namespace:Tracker.App.Views"
+                        xmlns:viewModels="clr-namespace:Tracker.App.ViewModels"
+                        x:Class="Tracker.App.Views.Project.EditProject"
+                        Title="EditProject"
+                        x:DataType="viewModels:ProjectEditViewModel"
+                        BackgroundColor="White">
+    <Grid>
+        <Entry Placeholder="Enter Project Name"
+               VerticalOptions="Start"
+               Text="{Binding Project.Name}"
+                HorizontalOptions="Center"
+               Margin="0,-35,0,0"
+               TextColor="Black"
+               BackgroundColor="#ebebeb"
+               WidthRequest="310"
+               HeightRequest="60"
+               FontSize="Large">
+        </Entry>
+
+
+        <Button Text="Remove Activity"
+                TextColor="Black"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Margin="10"
+                WidthRequest="152" HeightRequest="32"
+                BackgroundColor="#ebebeb"
+                BorderColor="Black"
+                BorderWidth="1">
+        </Button>
+
+        <Button Text="Save"
+                TextColor="Black"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Margin="0,0,10,75"
+                WidthRequest="152" HeightRequest="32"
+                BackgroundColor="#ebebeb"
+                BorderColor="Black"
+                BorderWidth="1">
+        </Button>
+
+        <Button Text="Delete Activity"
+                TextColor="Black"
+                VerticalOptions="End"
+                HorizontalOptions="Start"
+                Margin="10"
+                WidthRequest="152" HeightRequest="32"
+                BackgroundColor="#ebebeb"
+                BorderColor="Black"
+                BorderWidth="1">
+        </Button>
+
+
+
+        <Button Text="Activity1"
+                TextColor="Black"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Margin="0, 0, 0, 75"
+                WidthRequest="339" HeightRequest="50"
+                BackgroundColor="#ebebeb"
+                BorderColor="Black"
+                BorderWidth="1"/>
+        <Button Text="Activity2"
+                TextColor="Black"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Margin="0, 75, 0, 0"
+                WidthRequest="339" HeightRequest="50"
+                BackgroundColor="#ebebeb"
+                BorderColor="Black"
+                BorderWidth="1"/>
+
+        <CheckBox VerticalOptions="Center"
+                HorizontalOptions="Center"
+                  Margin="400, 0, 0, 70"/>
+        <CheckBox HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Margin="400, 70, 0, 0"/>
+
+        <Button Text="Create Activity"
+                TextColor="Black"
+                VerticalOptions="Start"
+                HorizontalOptions="End"
+                Margin="0,-427  ,5,0"
+                WidthRequest="152" HeightRequest="32"
+                BackgroundColor="#ebebeb"
+                BorderColor="Black"
+                BorderWidth="1">
+        </Button>
+        <Button Text="Add Activity"
+                TextColor="Black"
+                VerticalOptions="Start"
+                HorizontalOptions="End"
+                Margin="0,10    ,5,0"
+                WidthRequest="152" HeightRequest="32"
+                BackgroundColor="#ebebeb"
+                BorderColor="Black"
+                BorderWidth="1">
+        </Button>
+
+    </Grid>
+
+</views:ContentPageBase>

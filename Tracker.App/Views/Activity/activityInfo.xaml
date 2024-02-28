@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:views="clr-namespace:Tracker.App.Views"
+                        xmlns:viewModels="clr-namespace:Tracker.App.ViewModels"
+                        x:Class="Tracker.App.Views.Activity.activityInfo"
+                        Title="activityInfo"
+                        x:DataType="viewModels:ActivityDetailViewModel"
+                        BackgroundColor="White">
+    <StackLayout>
+
+        <Button WidthRequest="120"
+                HeightRequest="40"
+                BackgroundColor="#ebebeb"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Text="Delete"
+                TextColor="Black"
+                Margin="100,0,0,50"
+                BorderColor="Black"
+                Command="{Binding DeleteCommand}" />
+
+        <Button WidthRequest="120"
+                HeightRequest="40"
+                BackgroundColor="#ebebeb"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Text="Edit"
+                TextColor="Black"
+                BorderColor="Black"></Button>
+
+        <Grid ColumnDefinitions="auto, auto, auto, auto"
+              RowDefinitions="auto,auto,auto, auto"
+              ColumnSpacing="50">
+            <Label TextColor="black"
+                   Text="Start: "
+                   Grid.Column="0"
+                   FontSize="25"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Start"
+                   FontAttributes="Bold"></Label>
+
+            <Label TextColor="black"
+                   Grid.Column="1"
+                   Text="{Binding Activity.Start}"
+                   FontSize="15"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Start"
+                   FontAttributes="Bold"></Label>
+
+            <Label TextColor="black"
+                   Grid.Column="2"
+                   Text="End: "
+                   FontSize="25"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Start"
+                   FontAttributes="Bold"></Label>
+
+            <Label TextColor="black"
+                   Text="{Binding Activity.End}"
+                   Grid.Column="3"
+                   FontSize="15"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Start"
+                   FontAttributes="Bold"></Label>
+
+            <Label TextColor="black"
+                   Text="Name of Activity: "
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   FontSize="24"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   FontAttributes="Bold" />
+
+            <Label TextColor="black"
+                   Text="{Binding Activity.Name}"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   FontSize="20"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start" />
+
+            <Label TextColor="black"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   Text="Note:"
+                   FontSize="24"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   FontAttributes="Bold" />
+
+            <Label TextColor="black"
+                   Text="{Binding Activity.Description}"
+                   FontSize="10"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   Grid.Row="2"
+                   Grid.Column="1" />
+
+
+            <Label TextColor="black"
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   Text="Category:"
+                   FontSize="24"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   FontAttributes="Bold" />
+
+            <Label TextColor="black"
+                   Text="{Binding Activity.Type}"
+                   Grid.Row="3"
+                   Grid.Column="1"
+                   FontSize="15"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start" />
+
+        </Grid>
+
+    </StackLayout>
+
+</views:ContentPageBase>
